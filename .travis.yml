@@ -16,7 +16,8 @@ script:
   - cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   - make -j$(nproc)
 #  - make DESTDIR=appdir -j$(nproc) install ; find appdir/
-  - mkdir -p appdir/usr/bin ; cp sdrangelove ./appdir/usr/bin/
+  - mkdir -p appdir/usr/bin ; cp sdrangelove ./appdir/usr/bin/ # FIXME: Should be handled by make install
+  - mkdir -p appdir/usr/share/applications ; cp ../sdrangelove.desktop ./appdir/usr/share/applications/
   - mkdir -p appdir/usr/share/icons/hicolor/256x256/apps/ ; touch appdir/usr/share/icons/hicolor/256x256/apps/sdrangelove.png # FIXME
   - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
   - chmod a+x linuxdeployqt-continuous-x86_64.AppImage
