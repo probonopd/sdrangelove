@@ -1,0 +1,6 @@
+Type=Application
+Name=sdrangelove
+Icon=sdrangelove
+Exec=sdrangelove
+Categories=Network;HamRadio;
+Comment=SDR GUI supporting various input hardware
