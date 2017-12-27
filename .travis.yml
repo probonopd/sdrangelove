@@ -16,6 +16,7 @@ script:
   - cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   - make -j$(nproc)
   - make DESTDIR=appdir -j$(nproc) install ; find appdir/
+  - mv appdir/usr/bin/com.github.alecaddd.akira appdir/usr/bin/akira
   - strip sdrangelove libsdrbase.so # FIXME: Should be handled by make install
   - mkdir -p appdir/usr/bin ; cp sdrangelove ./appdir/usr/bin/ # FIXME: Should be handled by make install
   - mkdir -p appdir/usr/lib ; cp libsdrbase.so ./appdir/usr/lib/ # FIXME: Should be handled by make install
