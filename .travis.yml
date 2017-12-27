@@ -3,19 +3,19 @@ compiler: gcc
 sudo: require
 dist: trusty
 
-#before_install:
-#  - sudo add-apt-repository ppa:beineri/opt-qt593-trusty -y
-#  - sudo apt-get update -qq
+before_install:
+  - sudo add-apt-repository ppa:beineri/opt-qt593-trusty -y
+  - sudo apt-get update -qq
 
 install:
-  - sudo apt-get -y install libqt5multimedia5-plugins qtmultimedia5-dev qttools5-dev qttools5-dev-tools libqt5opengl5-dev qtbase5-dev libusb-1.0 librtlsdr-dev
-#  - source /opt/qt*/bin/qt*-env.sh
+  - sudo apt-get -y install qt59multimedia t59tools qt59base  libusb-1.0 librtlsdr-dev
+  - source /opt/qt*/bin/qt*-env.sh
 
 script:
   - mkdir out && cd out
   - cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   - make -j$(nproc)
-#  - make DESTDIR=appdir -j$(nproc) install ; find appdir/
+  - make DESTDIR=appdir -j$(nproc) install ; find appdir/
   - strip sdrangelove libsdrbase.so # FIXME: Should be handled by make install
   - mkdir -p appdir/usr/bin ; cp sdrangelove ./appdir/usr/bin/ # FIXME: Should be handled by make install
   - mkdir -p appdir/usr/lib ; cp libsdrbase.so ./appdir/usr/lib/ # FIXME: Should be handled by make install
