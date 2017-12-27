@@ -16,8 +16,9 @@ script:
   - cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
   - make -j$(nproc)
 #  - make DESTDIR=appdir -j$(nproc) install ; find appdir/
-  - strip sdrangelove
+  - strip sdrangelove libsdrbase.so # FIXME: Should be handled by make install
   - mkdir -p appdir/usr/bin ; cp sdrangelove ./appdir/usr/bin/ # FIXME: Should be handled by make install
+  - mkdir -p appdir/usr/lib ; cp libsdrbase.so ./appdir/usr/lib/ # FIXME: Should be handled by make install
   - chmod +x appdir/usr/bin/sdrangelove
   - mkdir -p appdir/usr/share/applications ; cp ../sdrangelove.desktop ./appdir/usr/share/applications/
   - mkdir -p appdir/usr/share/icons/hicolor/256x256/apps/ ; wget "https://avatars0.githubusercontent.com/u/1415806?s=256" -O appdir/usr/share/icons/hicolor/256x256/apps/sdrangelove.png # FIXME
